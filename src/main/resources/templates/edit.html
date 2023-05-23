@@ -3,49 +3,38 @@
       xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Edit</title>
+    <title>Szerkesztés</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
 </style>
 </head>
 <body style="background-color:black">
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Recept könyvtár</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a style="color:white" class="nav-item nav-link" href="/" th:href="@{/}">Home</a>
-            <a style="color:white" class="nav-item nav-link active" href="#">Matches</a>
+            <a style="color:white" class="nav-item nav-link" href="/" th:href="@{/}">Kezdőlap</a>
+            <a style="color:white" class="nav-item nav-link active" href="#">Receptek</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li sec:authorize="isAuthenticated()"><a style="color:white;" th:href="@{logout}">Logout</a></li>
+                <li sec:authorize="isAuthenticated()"><a style="color:white;" th:href="@{logout}">Kilépés</a></li>
             </ul>
         </div>
     </div>
 </nav>
-<!--
-<div class="dropdown">
-    <label style="color:white;" for="games">Choose a game:</label>
-    <select name="games" id="games">
-        <option value="csgo">Counter-Strike:Global Offensive</option>
-        <option value="lol">League of Legends</option>
-        <option value="rl">Rocket League</option>
-        <option value="sc2">Starcraft 2</option>
-    </select>
-</div>
--->
 
 <div class="container">
 
     <div class="row">
         <div class="col-md-4 mt-5">
             <form method="post"
-                  th:action="@{/e-sport/update}">
+                  th:action="@{/recipe/update}">
                 <div class="form-group">
-                    <label for="name" style="color:white;">Match módosítás</label>
+                    <label for="name" style="color:white;">Recept módosítás</label>
                 </div>
                 <div class="form-group">
                     <label for="name" style="color:white;">ID</label>
@@ -54,61 +43,43 @@
                            name="id"
                            readonly
                            class="form-control"
-                           th:value="${match.id}"/>
+                           th:value="${recipe.id}"/>
                 </div>
                 <div class="form-group">
-                    <label for="name" style="color:white;">Match dátuma:</label>
-                    <input type="date"
+                    <label for="name" style="color:white;">Recept Neve:</label>
+                    <input type="text"
                            id="name"
-                           name="date_of_match"
+                           name="title"
                            class="form-control"
-                           th:value="${match.dateOfMatch}"/>
+                           th:name="title"
+                           th:value="${recipe.title}"/>
                 </div>
                 <div class="form-group">
-                    <label for="name" style="color:white;">Első csapat neve:</label>
-                    <input type="text"
-                           id="name_of_team_1"
-                           name="name_of_team_1"
-                           class="form-control"
-                           th:value="${match.nameOfTeam1}"/>
+                    <label for="recipeType">Tipusa</label>
+                    <select id="recipeType"
+                            th:name="recipeType"
+                            th:value="${recipe.recipeType}"
+                            class="form-control">
+                        <option value="DESZSZERT">Deszert</option>
+                        <option value="FOETEL">Főétel</option>
+                        <option value="LEVES">Leves</option>
+                        <option value="SZENDVICSEK">Szendvics</option>
+                        <option value="ITAL">Ital</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="name" style="color:white;">Első csapat pontja(i):</label>
-                    <input type="number"
-                           id="points_of_team_1"
-                           name="points_of_team_1"
-                           class="form-control"
-                           th:value="${match.pointsOfTeam1}"/>
+                    <label for="ingredient" style="color:white;">Hozzávalók:</label>
+                    <textarea id="ingredient" name="ingredient" class="form-control" th:name="ingredient" th:text="${recipe.ingredient}"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="name" style="color:white;">Második csapat neve:</label>
-                    <input type="text"
-                           id="name_of_team_2"
-                           name="name_of_team_2"
-                           class="form-control"
-                           th:value="${match.nameOfTeam2}"/>
-                </div>
-                <div class="form-group">
-                    <label for="name" style="color:white;">Második csapat pontjai:</label>
-                    <input type="number"
-                           id="points_of_team_2"
-                           name="points_of_team_2"
-                           class="form-control"
-                           th:value="${match.pointsOfTeam2}"/>
-                </div>
-                <div class="form-group">
-                    <label for="game" style="color:white;">Játék</label>
-                    <input type="text"
-                           id="game"
-                           name="game"
-                           class="form-control"
-                           th:value="${match.game}"/>
+                    <label for="description" style="color:white;">Leírása:</label>
+                    <textarea id="description" name="description" class="form-control" th:name="description" th:text="${recipe.description}"></textarea>
                 </div>
 
                 <button class="btn btn-primary"
-                        type="submit">Módosít
+                        type="submit">Kérdés Módosítása
                 </button>
-                <a th:href="@{/e-sport}"
+                <a th:href="@{/recipe}"
                    class="btn btn-secondary"
                    type="submit">Mégsem</a>
             </form>

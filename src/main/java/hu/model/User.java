@@ -1,78 +1,153 @@
 package hu.model;
 
-import javax.persistence.*;
 import java.util.Collection;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
+/**
+ * Entity class representing a user.
+ */
 @Entity
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(name = "Username")
-  private String username;
-  private String email;
-  private String password;
+    @Column(name = "Username")
+    private String username;
+    private String email;
+    private String password;
 
-  @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JoinTable(
-          name = "users_roles",
-          joinColumns = @JoinColumn(
-                  name = "user_id", referencedColumnName = "id"),
-          inverseJoinColumns = @JoinColumn(
-                  name = "role_id", referencedColumnName = "id"))
-  private Collection<Role> roles;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 
-  public User() {
+    /**
+     * Default constructor.
+     */
+    public User() {
 
-  }
+    }
 
-  public User(String username, String email, String password, Collection<Role> roles) {
-    this.username = username;
-    this.email = email;
-    this.password = password;
-    this.roles = roles;
-  }
+    /**
+     * Constructor with username, email, password, and roles parameters.
+     *
+     * @param username the username of the user
+     * @param email    the email of the user
+     * @param password the password of the user
+     * @param roles    the roles of the user
+     */
+    public User(String username, String email, String password, Collection<Role> roles) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
 
-  public Long getId() {
-    return id;
-  }
+    /**
+     * Returns the ID of the user.
+     *
+     * @return the ID of the user
+     */
+    public Long getId() {
+        return id;
+    }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    /**
+     * Sets the ID of the user.
+     *
+     * @param id the ID of the user
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public String getUsername() {
-    return username;
-  }
+    /**
+     * Returns the username of the user.
+     *
+     * @return the username of the user
+     */
+    public String getUsername() {
+        return username;
+    }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+    /**
+     * Sets the username of the user.
+     *
+     * @param username the username of the user
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-  public String getEmail() {
-    return email;
-  }
+    /**
+     * Returns the email of the user.
+     *
+     * @return the email of the user
+     */
+    public String getEmail() {
+        return email;
+    }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    /**
+     * Sets the email of the user.
+     *
+     * @param email the email of the user
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-  public String getPassword() {
-    return password;
-  }
+    /**
+     * Returns the password of the user.
+     *
+     * @return the password of the user
+     */
+    public String getPassword() {
+        return password;
+    }
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+    /**
+     * Sets the password of the user.
+     *
+     * @param password the password of the user
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-  public Collection<Role> getRoles() {
-    return roles;
-  }
+    /**
+     * Returns the roles of the user.
+     *
+     * @return the roles of the user
+     */
+    public Collection<Role> getRoles() {
+        return roles;
+    }
 
-  public void setRoles(Collection<Role> roles) {
-    this.roles = roles;
-  }
+    /**
+     * Sets the roles of the user.
+     *
+     * @param roles the roles of the user
+     */
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
 }

@@ -3,27 +3,40 @@ package hu.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * Controller for handling main routes.
+ */
 @Controller
 public class MainController {
 
-  @GetMapping("/login")
-  public String login() {
-    return "login";
-  }
+    /**
+     * Handles the "/login" route.
+     *
+     * @return the name of the login view
+     */
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 
-  @GetMapping("/")
-  public String index() {
-    return "index";
-  }
+    /**
+     * Handles the "/" route.
+     *
+     * @return the name of the index view
+     */
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
 
-  @GetMapping("/games")
-  public String games() {
-    return "games";
-  }
-
-  @GetMapping("/matches")
-  public String matches() {
-    return "matches";
-  }
+    /**
+     * Handles the "/recipes" route.
+     *
+     * @return the name of the recipes view
+     */
+    @GetMapping("/recipes")
+    public String recipes() {
+        return "recipes";
+    }
 
 }

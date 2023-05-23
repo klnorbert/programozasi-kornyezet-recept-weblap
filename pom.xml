@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>hu</groupId>
-    <artifactId>recept-weblap</artifactId>
+    <artifactId>recipe</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>recept-weblap</name>
+    <name>recipe</name>
     <description>A webpage for Progkor 2023</description>
     <properties>
         <java.version>17</java.version>
@@ -132,15 +132,14 @@
                 </executions>
                 <configuration>
                     <excludes>
-                        <!--
-                        <exclude>hu\nye\progkor\esport\config\**</exclude>
-                        <exclude>hu\nye\progkor\esport\controller\**</exclude>
-                        <exclude>hu\nye\progkor\esport\model\**</exclude>
-                        <exclude>hu\nye\progkor\esport\ESportTournamentApplication.class</exclude>
-                        <exclude>hu\nye\progkor\esport\web\**</exclude>
-                        <exclude>hu\nye\progkor\esport\repository\**</exclude>
-                        <exclude>hu\nye\progkor\esport\service\impl\UserServiceImpl.class</exclude>
-                        -->
+                        <exclude>*Test</exclude>
+                        <exclude>hu\model\**</exclude>
+                        <exclude>hu\config\**</exclude>
+                        <exclude>hu\web\**</exclude>
+                        <exclude>hu\controller\**</exclude>
+                        <exclude>hu\service\impl\UserServiceImpl.class</exclude>
+                        <exclude>hu\RecipeApplication.class</exclude>
+                        <exclude>hu\RecipeApplication.class</exclude>
                         <exclude>*Test</exclude>
                     </excludes>
                     <rules>
@@ -150,7 +149,7 @@
                                 <limit>
                                     <counter>LINE</counter>
                                     <value>COVEREDRATIO</value>
-                                    <minimum>0%</minimum>
+                                    <minimum>80%</minimum>
                                 </limit>
                                 <limit>
                                     <counter>BRANCH</counter>
@@ -162,7 +161,6 @@
                     </rules>
                 </configuration>
             </plugin>
-<!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -200,14 +198,13 @@
                     </execution>
                 </executions>
             </plugin>
--->
         </plugins>
     </build>
     <distributionManagement>
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/klnorbert/programozasi-kornyezet-recept-weblap
+            <url>https://maven.pkg.github.com/klnorbert/programozasi-kornyezet-recipe-weblap
             </url>
         </repository>
     </distributionManagement>
