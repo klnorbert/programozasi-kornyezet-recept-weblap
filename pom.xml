@@ -10,7 +10,7 @@
     </parent>
     <groupId>hu</groupId>
     <artifactId>recipe</artifactId>
-    <version>0.0.18</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>recipe</name>
     <description>A webpage for Progkor 2023</description>
     <properties>
@@ -207,7 +207,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/klnorbert/programozasi-kornyezet-recipe-weblap
+            <url>https://maven.pkg.github.com/klnorbert/programozasi-kornyezet-recept-weblap
             </url>
         </repository>
     </distributionManagement>
