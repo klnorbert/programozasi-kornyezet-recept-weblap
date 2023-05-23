@@ -2,6 +2,7 @@ package hu.service.impl;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import hu.model.Role;
@@ -23,7 +24,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -43,7 +44,7 @@ public class UserServiceImpl implements UserService {
         User user = new User(registrationDto.getUsername(),
                 registrationDto.getEmail(),
                 passwordEncoder.encode(registrationDto.getPassword()),
-                Arrays.asList(new Role("Regisztálva")));
+                List.of(new Role("Regisztálva")));
 
         return userRepository.save(user);
     }

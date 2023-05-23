@@ -8,5 +8,5 @@ public enum RECIPETYPE {
     FOETEL,
     LEVES,
     SZENDVICSEK,
-    ITAL;
+    ITAL
 }

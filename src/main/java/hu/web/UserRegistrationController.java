@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/signup")
 public class UserRegistrationController {
 
-    private UserService userService;
+    private final UserService userService;
 
     /**
      * Constructs a new UserRegistrationController with the specified UserService.
@@ -50,7 +50,8 @@ public class UserRegistrationController {
      * Handles the POST request for registering a new user account.
      *
      * @param registrationDto the UserRegistrationDto containing the user registration data
-     * @return a redirect to the signup view with a success parameter if the registration is successful
+     * @return a redirect to the signup view with a success parameter if the registration is
+     * successful
      */
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) {

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api/v1/recipe")
 public class RestController {
 
-    private RecipeService recipeService;
+    private final RecipeService recipeService;
 
     public RestController(RecipeService recipeService) {
         this.recipeService = recipeService;
@@ -31,7 +31,8 @@ public class RestController {
      * Retrieves a recipe by its ID.
      *
      * @param id the ID of the recipe to retrieve
-     * @return the ResponseEntity with the recipe if found, or ResponseEntity.notFound() if not found
+     * @return the ResponseEntity with the recipe if found,
+     * or ResponseEntity.notFound() if not found
      */
     @GetMapping("/{id}")
     public ResponseEntity<Recipe> getRecipeById(@PathVariable Long id) {
