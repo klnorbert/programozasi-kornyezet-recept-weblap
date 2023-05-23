@@ -17,13 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class InMemorySongRepositoryTest {
+class InMemoryRecipeRepositoryTest {
 
-    private InMemorySongRepository repository;
+    private InMemoryRecipeRepository repository;
 
     @BeforeEach
     void setUp() {
-        repository = new InMemorySongRepository();
+        repository = new InMemoryRecipeRepository();
     }
     @Test
     @Order(6)
@@ -89,7 +89,7 @@ class InMemorySongRepositoryTest {
     @Test
     @Order(2)
     void getById_ExistingId_ShouldReturnOptionalSong() {
-        repository = new InMemorySongRepository();
+        repository = new InMemoryRecipeRepository();
         // Given
         Long id = 3L;
         Recipe recipe = new Recipe(id, RECIPETYPE.DESZSZERT, "Recipe 1", "Ingredients 1", "Description 1");

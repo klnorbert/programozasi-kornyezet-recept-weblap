@@ -89,7 +89,7 @@ public class RecipeController {
     /**
      * Creates a new recipe and populates the model with the saved recipe.
      *
-     * @param model the model object to populate with data
+     * @param model  the model object to populate with data
      * @param recipe the recipe to create
      * @return the view name to render
      */

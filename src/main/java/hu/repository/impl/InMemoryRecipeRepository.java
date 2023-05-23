@@ -12,7 +12,7 @@ import hu.repository.Repository;
  * Map-based in-memory implementation of the {@link Repository} interface.
  */
 @org.springframework.stereotype.Repository
-public class InMemorySongRepository implements Repository<Recipe, Long> {
+public class InMemoryRecipeRepository implements Repository<Recipe, Long> {
 
     private static final Map<Long, Recipe> STORAGE = new HashMap<>();
 
