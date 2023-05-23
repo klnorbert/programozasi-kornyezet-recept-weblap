@@ -38,7 +38,7 @@ jobs:
           # Overwrite local artifact version
           mvn -B versions:set -DnewVersion="$version" --file pom.xml
           mvn -B deploy --file pom.xml
-          cp "target/recipe-${version}.jar" "target/recipe.jar"
+          cp "target/recept-weblap-${version}.jar" "target/recept-weblap.jar"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Log in to the Container registry
