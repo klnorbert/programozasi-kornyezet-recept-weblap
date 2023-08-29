@@ -108,8 +108,10 @@ class InMemoryRecipeRepositoryTest {
         // Given
         Recipe recipe1 = new Recipe(1L, RECIPETYPE.DESZSZERT, "Recipe 1", "Ingredients 1", "Description 1");
         Recipe recipe2 = new Recipe(2L, RECIPETYPE.FOETEL, "Recipe 2", "Ingredients 2", "Description 2");
+        Recipe recipe3 = new Recipe(3L, RECIPETYPE.FOETEL, "Recipe 3", "Ingredients 3", "Description 3");
         repository.save(recipe1);
         repository.save(recipe2);
+        repository.save(recipe3);
         List<Recipe> expectedRecipes = Arrays.asList(recipe1, recipe2);
 
         // When
